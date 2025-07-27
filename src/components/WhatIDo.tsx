@@ -56,7 +56,18 @@ export default function WhatIDo() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: idx * 0.1, ease: 'easeOut' }}
           >
-            <service.Icon size={32} className="mb-4 text-gold" />
+            {/*
+              We wrap the icon in a span with styling instead of passing
+              className directly to the icon component. React Icons
+              components only accept a limited set of props (size, color,
+              strokeWidth, etc.), so TypeScript complains when additional
+              props like `className` are provided. Wrapping the icon
+              allows us to style it via Tailwind classes without
+              modifying its props.
+            */}
+            <span className="mb-4 text-gold">
+              <service.Icon size={32} />
+            </span>
             <h3 className="mb-2 font-headline text-lg font-semibold text-neutral-900 dark:text-neutral-100">
               {service.title}
             </h3>
