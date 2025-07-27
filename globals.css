@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Locomotive Scroll styles for smooth scrolling */
+@import 'locomotive-scroll/dist/locomotive-scroll.css';
+
+/* Apply smooth scrolling across the site */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-black dark:bg-neutral-900 dark:text-neutral-100 font-body;
+}
+
+/* Custom marquee animation for brands section */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Ripple effect for buttons */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: currentColor;
+  opacity: 0.1;
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  border-radius: inherit;
+}
+.btn-ripple:hover::after {
+  transform: scale(3);
+  opacity: 0;
+}
